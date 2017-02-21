@@ -1,9 +1,11 @@
-mport ckan.lib.search as search
-import ckan.model as model
+import logging
+
+import ckan.lib.search as search
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
+
 import helpers as helpers
-import logging
+
 log = logging.getLogger('ckan.logic')
 
 # Uncomment for translations
@@ -13,10 +15,10 @@ except ImportError:
     class DefaultTranslation():
         pass
 
-class DCATAmsterdam(p.SingletonPlugin, DefaultTranslation, tk.DefaultDatasetForm):
 
+class DCATAmsterdam(p.SingletonPlugin, DefaultTranslation, tk.DefaultDatasetForm):
     # Uncomment to activate the translations
-    # TRANSLATIONS BUG: --> http://stackoverflow.com/questions/36038176/ckan-error-after-enabling-harvester-module-module-object-has-no-attribute-i 
+    # TRANSLATIONS BUG: --> http://stackoverflow.com/questions/36038176/ckan-error-after-enabling-harvester-module-module-object-has-no-attribute-i
     if tk.check_ckan_version(min_version='2.5.0'):
         p.implements(p.ITranslation, inherit=False)
     p.implements(p.IDatasetForm)
@@ -34,6 +36,7 @@ class DCATAmsterdam(p.SingletonPlugin, DefaultTranslation, tk.DefaultDatasetForm
 
     def _modify_package_schema(self):
         # Add our metadata fields to the package schema
+        schema = super(DCATAmsterdam, self).create_package_schema()
         schema.update({
             'language': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')],
             'publisher_uri': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')],
@@ -46,8 +49,8 @@ class DCATAmsterdam(p.SingletonPlugin, DefaultTranslation, tk.DefaultDatasetForm
             'temporal': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')],
             'theme': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')],
             'version_notes': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')],
-            'dataclassificatie': [tk.get_validator('ignore_missing'),tk.get_converter('convert_to_extras')],
-            'tijdseenheid': [tk.get_validator('ignore_missing'),tk.get_converter('convert_to_extras')],
+            'dataclassificatie': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')],
+            'tijdseenheid': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')],
             'gebiedseenheid': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')]
         })
         # Add our metadata fields to the resource schema
@@ -71,20 +74,20 @@ class DCATAmsterdam(p.SingletonPlugin, DefaultTranslation, tk.DefaultDatasetForm
     def show_package_schema(self):
         schema = super(DCATAmsterdam, self).show_package_schema()
         schema.update({
-            'language': [tk.get_converter('convert_from_extras'),tk.get_validator('ignore_missing')],
-            'publisher_uri': [tk.get_converter('convert_from_extras'),tk.get_validator('ignore_missing')],
-            'contact_email': [tk.get_converter('convert_from_extras'),tk.get_validator('ignore_missing')],
-            'contact_name': [tk.get_converter('convert_from_extras'),tk.get_validator('ignore_missing')],
-            'contact_uri': [tk.get_converter('convert_from_extras'),tk.get_validator('ignore_missing')],
-            'frequency': [tk.get_converter('convert_from_extras'),tk.get_validator('ignore_missing')],
-            'publisher_email': [tk.get_converter('convert_from_extras'),tk.get_validator('ignore_missing')],
-            'spatial': [tk.get_converter('convert_from_extras'),tk.get_validator('ignore_missing')],
-            'temporal': [tk.get_converter('convert_from_extras'),tk.get_validator('ignore_missing')],
-            'theme': [tk.get_converter('convert_from_extras'),tk.get_validator('ignore_missing')],
-            'version_notes': [tk.get_converter('convert_from_extras'),tk.get_validator('ignore_missing')],
-            'dataclassificatie': [tk.get_converter('convert_from_extras'),tk.get_validator('ignore_missing')],
-            'tijdseenheid': [tk.get_converter('convert_from_extras'),tk.get_validator('ignore_missing')],
-            'gebiedseenheid': [tk.get_converter('convert_from_extras'),tk.get_validator('ignore_missing')]
+            'language': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
+            'publisher_uri': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
+            'contact_email': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
+            'contact_name': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
+            'contact_uri': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
+            'frequency': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
+            'publisher_email': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
+            'spatial': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
+            'temporal': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
+            'theme': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
+            'version_notes': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
+            'dataclassificatie': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
+            'tijdseenheid': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
+            'gebiedseenheid': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')]
         })
 
         schema['resources'].update({
@@ -103,7 +106,6 @@ class DCATAmsterdam(p.SingletonPlugin, DefaultTranslation, tk.DefaultDatasetForm
         # registers itself as the default (above).
         return []
 
-
     ######################################################################
     ############################ ICONFIGURER #############################
     ######################################################################
@@ -115,7 +117,6 @@ class DCATAmsterdam(p.SingletonPlugin, DefaultTranslation, tk.DefaultDatasetForm
 
         # Register this plugin's fanstatic directory with CKAN.
         tk.add_resource('fanstatic', 'dcatAmsterdam')
-
 
     ######################################################################
     ######################### IPACKAGECONTROLLER #########################
@@ -145,5 +146,5 @@ class DCATAmsterdam(p.SingletonPlugin, DefaultTranslation, tk.DefaultDatasetForm
 
     def get_helpers(self):
         return {
-                'get_tracking_summary': helpers.get_tracking_summary
-                }
+            'get_tracking_summary': helpers.get_tracking_summary
+        }

@@ -1,2 +1,0 @@
-recursive-include ckanext/privatedatasets/templates *
-recursive-include ckanext/privatedatasets/fanstatic *

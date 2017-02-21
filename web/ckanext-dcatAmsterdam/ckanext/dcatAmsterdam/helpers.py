@@ -1,13 +1,9 @@
-import ckan.model as model
-import ckan.plugins.toolkit as tk
-import db
-
-from pylons import config
-
-from ckan.common import request
-
 import logging
+
+import ckan.model as model
+
 log = logging.getLogger(__name__)
+
 
 def get_tracking_summary(package):
     # page-view tracking summary data

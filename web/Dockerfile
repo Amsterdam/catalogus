@@ -52,10 +52,10 @@ RUN mkdir -p /etc/ckan/default \
 	&& chown -R ckan /etc/ckan /var/lib/ckan
 
 # Copy plugins
-COPY ckanext-privatedatasets /src/ckanext-privatedatasets
+COPY ckanext-dcatAmsterdam /src/ckanext-dcatAmsterdam
 COPY ckanext-iauthfunctions /src/ckanext-iauthfunctions
 
-WORKDIR /src/ckanext-privatedatasets
+WORKDIR /src/ckanext-dcatAmsterdam
 # make sure the the plugins are installed in develop mode
 RUN python setup.py develop
 
