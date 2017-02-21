@@ -1,0 +1,20 @@
+{% ckan_extends %}
+
+{% block metadata_fields %}
+    {% set existing_type = '' %}
+    {% if 'type' in data.extras %}
+        {% set existing_type = data.extras[type} %}
+    {% endif %}
+      <div class="control-group">
+        <label for="field-type" class="control-label">{{ _('type') }}</label>
+        <div class="controls">
+          <select id="field-type" name="type" data-module="autocomplete">
+              {% set typelist = ['Data','Documentatie','Weergave','Toepassingen','Scripts, code & tools'] %}
+              {% for type in typelist %}
+                    <option value="{{ type }}" {% if existing_type == type %} selected="selected" {% endif %}>{{ type }}</option>
+              {% endfor %}
+          </select>
+        </div>
+      </div>
+{% endblock %}
+

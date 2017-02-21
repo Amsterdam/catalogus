@@ -1,0 +1,360 @@
+# Dutch translations for ckanext-dcatAmsterdam.
+# Copyright (C) 2016 ORGANIZATION
+# This file is distributed under the same license as the
+# ckanext-dcatAmsterdam
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ckanext-dcatAmsterdam 0.1.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-07-07 16:42+0200\n"
+"PO-Revision-Date: 2016-07-07 16:42+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: nl <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+
+#: ckanext/dcatAmsterdam/auth.py:75
+#, python-format
+msgid ""
+"This private dataset can be acquired. To do so, please click <a "
+"target=\"_blank\" href=\"%s\">here</a>"
+msgstr "Deze privé dataset kan worden bekeken met toestemming. Om dit aan te vragen, klik <a "
+"target=\"_blank\" href=\"%s\">here</a>."
+
+#: ckanext/dcatAmsterdam/auth.py:79 ckanext/dcatAmsterdam/auth.py:83
+#, python-format
+msgid "User %s not authorized to read package %s"
+msgstr "Gebruiker %s heeft geen rechten om deze dataset %s in te lezen."
+
+#: ckanext/dcatAmsterdam/auth.py:126
+msgid "No package found for this resource, cannot check auth."
+msgstr "Er is geen inhoud gevonden bij deze bron, want de rechten kunnen niet gechecked worden."
+
+#: ckanext/dcatAmsterdam/auth.py:132
+#, python-format
+msgid "User %s not authorized to read resource %s"
+msgstr "Gebruiker %s heeft geen rechten om deze databron %s in te lezen."
+
+#: ckanext/dcatAmsterdam/auth.py:103
+#, python-format
+msgid "User %s is not authorized to edit package %s"
+msgstr "Gebruiker %s heeft geen rechten om deze dataset %s te bewerken."
+
+# msgstr "Gebruiker %s heeft geen rechten om deze dataset te bewerken."
+
+#: ckanext/dcatAmsterdam/converters_validators.py:49
+msgid "This field is only valid when you create a private dataset"
+msgstr "Dit veld is alleen geldig, wanneer een privé dataset wordt aangemaakt."
+
+#: ckanext/dcatAmsterdam/converters_validators.py:104
+#, python-format
+msgid "The URL \"%s\" is not valid."
+msgstr "De URL \"%s\" is niet geldig."
+
+#: ckanext/dcatAmsterdam/controllers/ui_controller.py:47
+msgid "User not found"
+msgstr "Gebruiker niet gevonden."
+
+#: ckanext/dcatAmsterdam/controllers/ui_controller.py:49
+msgid "Not authorized to see this page"
+msgstr "Deze gebruiker heeft geen rechten om deze pagina te bekijken."
+
+#: ckanext/dcatAmsterdam/templates/package/search.html:12
+msgid "Relevance"
+msgstr "Relevantie"
+
+#: ckanext/dcatAmsterdam/templates/package/search.html:13
+msgid "Name Ascending"
+msgstr "Naam oplopend"
+
+#: ckanext/dcatAmsterdam/templates/package/search.html:14
+msgid "Name Descending"
+msgstr "Naam aflopend"
+
+#: ckanext/dcatAmsterdam/templates/package/search.html:15
+msgid "Last Modified"
+msgstr "Laatst bijgewerkt"
+
+#: ckanext/dcatAmsterdam/templates/package/search.html:16
+msgid "Dataset Language Ascending"
+msgstr "Taal oplopend"
+
+#: ckanext/dcatAmsterdam/templates/package/search.html:17
+msgid "Dataset Language Descending"
+msgstr "Taal aflopend"
+
+#: ckanext/dcatAmsterdam/templates/package/search.html:18
+#: ckanext/dcatAmsterdam/templates/snippets/package_item.html:66
+msgid "Popular"
+msgstr "Populariteit"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/additional_info.html:7
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:23
+msgid "Contact name"
+msgstr "Contact naam"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/additional_info.html:13
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:27
+msgid "Contact e-mail"
+msgstr "Contact e-mail"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/additional_info.html:19
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:31
+msgid "Contact uri"
+msgstr "Contact uri"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/additional_info.html:25
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:35
+msgid "Dataset Language"
+msgstr "Taal"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/additional_info.html:31
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:39
+msgid "Theme"
+msgstr "Thema"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/additional_info.html:37
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:43
+msgid "Publisher"
+msgstr "Data-eigenaar"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/additional_info.html:43
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:47
+msgid "Publisher email"
+msgstr "Email data-eigenaar"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/additional_info.html:49
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:51
+msgid "Version notes"
+msgstr "Versie opmerkingen"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/additional_info.html:55
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:55
+msgid "Frequency"
+msgstr "Update frequentie"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/additional_info.html:61
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:59
+msgid "Temporal"
+msgstr "Periode"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/additional_info.html:67
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:63
+msgid "Spatial"
+msgstr "Locatie"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:26
+msgid "Organization"
+msgstr "Bron"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:30
+msgid "No organization"
+msgstr "Geen organisatie"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:44
+msgid "Visibility"
+msgstr "Zichtbaarheid"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:47
+#: ckanext/dcatAmsterdam/templates/snippets/package_item.html:32
+msgid "Private"
+msgstr "Privé"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:47
+msgid "Public"
+msgstr "Publiekelijk"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:53
+msgid ""
+" Private datasets can only be accessed by certain users, while public "
+"datasets can be accessed by anyone. "
+msgstr "Privé datasets kunnen slechts door bepaalde gebruikers worden benaderd, terwijl publieke datasets door iedereen kunnen worden benaderd."
+
+# #: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:63
+# msgid "Searchable"
+# msgstr "Vindbaarheid"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:66
+msgid "True"
+msgstr "True"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:66
+msgid "False"
+msgstr "False"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:66
+msgid "Completely Closed"
+msgstr "Volledig gesloten"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:66
+msgid "Closed and Visible to Group"
+msgstr "Gesloten, titel en omschrijving zichtbaar voor gebruikers in je organisatie."
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:66
+msgid "Group Members Only"
+msgstr "Gesloten, bruikbaar voor gebruikers in je organisatie."
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:66
+msgid "Closed but Visible to All"
+msgstr "Titel en omschrijving zichtbaar voor iedereen, maar niet benaderbaar."
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:72
+msgid ""
+" Searchable datasets can be searched by anyone, while not-searchable "
+"datasets can only be accessed by entering directly its URL. "
+msgstr "Vindbare datasets zijn voor iedereen zichtbaar, terwijl niet-vindbare datasets slechts kunnen worden benaderd door direct de URL aan te roepen."
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:86
+msgid "Allowed Users"
+msgstr "Toegestane gebruikers."
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:90
+msgid "Acquire URL"
+msgstr "Vraag URL aan"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:90
+msgid "http://example.com/acquire/"
+msgstr "http://voorbeeld.nl/aanvraag/"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:97
+msgid "State"
+msgstr "Status"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:100
+msgid "Active"
+msgstr "Actief"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_basic_fields.html:101
+#: ckanext/dcatAmsterdam/templates/snippets/package_item.html:61
+msgid "Deleted"
+msgstr "Verwijderd"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:11
+msgid "Source"
+msgstr "Bron"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:11
+msgid "http://example.com/dataset.json"
+msgstr "http://voorbeeld.nl/dataset.csv"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:15
+msgid "Version"
+msgstr "Versienummer"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:15
+msgid "1.0"
+msgstr ""
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:23
+msgid "contact_name placeholder"
+msgstr "Dataplatform.nl"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:27
+msgid "contact_email placeholder"
+msgstr "info@dataplatform.nl"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:31
+msgid "contact_uri placeholder"
+msgstr "vb. http://gemeentenaam.nl/sociale-zaken  Formele omschrijving van de bron"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:35
+msgid "Dataset Language placeholder"
+msgstr "Nederlands"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:39
+msgid "theme placeholder"
+msgstr "vb. Huisvesting, Zorg en zekerheid"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:43
+msgid "publisher_uri placeholder"
+msgstr "Gemeentenaam"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:47
+msgid "publisher_email placeholder"
+msgstr "naam@gemeentenaam.nl"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:51
+msgid "version_notes placeholder"
+msgstr "vb. Eerste versie"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:55
+msgid "frequency placeholder"
+msgstr "vb. wekelijks, incidentieel, eenmalig"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:59
+msgid "temporal placeholder"
+msgstr "2016, 2013/2014, 2012-2014"
+
+#: ckanext/dcatAmsterdam/templates/package/snippets/package_metadata_fields.html:63
+msgid "spatial placeholder"
+msgstr "Gebiedsomschrijving in lat/lon"
+
+#: ckanext/dcatAmsterdam/templates/snippets/acquire_button.html:14
+msgid "Acquire"
+msgstr "Vraag aan"
+
+#: ckanext/dcatAmsterdam/templates/snippets/package_item.html:38
+msgid "Acquired"
+msgstr "Toegewezen"
+
+#: ckanext/dcatAmsterdam/templates/snippets/package_item.html:44
+msgid "Owner"
+msgstr "Eigenaar"
+
+#: ckanext/dcatAmsterdam/templates/snippets/package_item.html:59
+msgid "Draft"
+msgstr "Test / Proef"
+
+#: ckanext/dcatAmsterdam/templates/user/dashboard.html:6
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: ckanext/dcatAmsterdam/templates/user/dashboard.html:16
+msgid "Edit settings"
+msgstr "Bewerk settings"
+
+#: ckanext/dcatAmsterdam/templates/user/dashboard.html:19
+#: ckanext/dcatAmsterdam/templates/user/dashboard.html:38
+msgid "News feed"
+msgstr "News Feed"
+
+#: ckanext/dcatAmsterdam/templates/user/dashboard.html:20
+msgid "My Datasets"
+msgstr "Mijn datasets"
+
+#: ckanext/dcatAmsterdam/templates/user/dashboard.html:21
+#: ckanext/dcatAmsterdam/templates/user/dashboard_acquired.html:10
+msgid "Acquired Datasets"
+msgstr "Toegewezen datasets"
+
+#: ckanext/dcatAmsterdam/templates/user/dashboard.html:22
+msgid "My Organizations"
+msgstr "Mijn organisaties"
+
+#: ckanext/dcatAmsterdam/templates/user/dashboard.html:23
+msgid "My Groups"
+msgstr "Mijn groepen"
+
+#: ckanext/dcatAmsterdam/templates/user/dashboard.html:40
+msgid "Activity from items that I'm following"
+msgstr "Activiteiten over items die ik volg"
+
+#: ckanext/dcatAmsterdam/templates/user/dashboard_acquired.html:6
+msgid "Acquire Dataset"
+msgstr "Toegewezen dataset"
+
+#: ckanext/dcatAmsterdam/templates/user/dashboard_acquired.html:15
+msgid "You haven't acquired any datasets."
+msgstr "U heeft geen datasets toegewezen."
+
+#: ckanext/dcatAmsterdam/templates/user/dashboard_acquired.html:16
+msgid "Acquire one now?"
+msgstr "Wilt u er één toegewezen krijgen?"
+
+
