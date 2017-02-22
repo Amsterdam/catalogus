@@ -9,6 +9,9 @@
 
   {% block package_custom_fields_dataclassificatie %}
   {% set existing_dataclassificatie = data.dataclassificatie %}
+  {% if not existing_dataclassificatie %}
+    {% set existing_dataclassificatie = 'Intern' %}
+  {% endif %}
     <div class="control-group">
       <label for="field-dataclassificatie" class="control-label">{{ _('Dataclassificatie') }}</label>
       <div class="controls">

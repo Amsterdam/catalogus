@@ -1,1 +1,2 @@
 recursive-include ckanext/dcatAmsterdam/templates *
+recursive-include ckanext/dcatAmsterdam/fanstatic *
