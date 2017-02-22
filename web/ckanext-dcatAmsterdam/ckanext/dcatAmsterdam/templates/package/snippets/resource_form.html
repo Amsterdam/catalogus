@@ -3,7 +3,7 @@
 {% block metadata_fields %}
     {% set existing_type = '' %}
     {% if 'type' in data.extras %}
-        {% set existing_type = data.extras[type} %}
+        {% set existing_type = data.extras[type] %}
     {% endif %}
       <div class="control-group">
         <label for="field-type" class="control-label">{{ _('type') }}</label>
