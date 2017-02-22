@@ -34,9 +34,8 @@ class DCATAmsterdam(p.SingletonPlugin, DefaultTranslation, tk.DefaultDatasetForm
         self.name = 'dcatAmsterdam'
         self.indexer = search.PackageSearchIndex()
 
-    def _modify_package_schema(self):
+    def _modify_package_schema(self, schema):
         # Add our metadata fields to the package schema
-        schema = super(DCATAmsterdam, self).create_package_schema()
         schema.update({
             'language': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')],
             'publisher_uri': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')],
@@ -60,16 +59,15 @@ class DCATAmsterdam(p.SingletonPlugin, DefaultTranslation, tk.DefaultDatasetForm
         return schema
 
     def create_package_schema(self):
-        # grab the default schema in our plugin
         schema = super(DCATAmsterdam, self).create_package_schema()
-        schema.update(self._modify_package_schema())
+        schema = self._modify_package_schema(schema)
         return schema
 
     def update_package_schema(self):
-        # grab the default schema in our plugin
         schema = super(DCATAmsterdam, self).update_package_schema()
-        schema.update(self._modify_package_schema())
+        schema = self._modify_package_schema(schema)
         return schema
+
 
     def show_package_schema(self):
         schema = super(DCATAmsterdam, self).show_package_schema()
@@ -117,28 +115,6 @@ class DCATAmsterdam(p.SingletonPlugin, DefaultTranslation, tk.DefaultDatasetForm
 
         # Register this plugin's fanstatic directory with CKAN.
         tk.add_resource('fanstatic', 'dcatAmsterdam')
-
-    ######################################################################
-    ######################### IPACKAGECONTROLLER #########################
-    ######################################################################
-
-    def before_index(self, pkg_dict):
-        return pkg_dict
-
-    def after_create(self, context, pkg_dict):
-        return pkg_dict
-
-    def after_update(self, context, pkg_dict):
-        return self.after_create(context, pkg_dict)
-
-    def after_show(self, context, pkg_dict):
-        return pkg_dict
-
-    def after_delete(self, context, pkg_dict):
-        return pkg_dict
-
-    def after_search(self, search_results, search_params):
-        return search_results
 
     ######################################################################
     ######################### ITEMPLATESHELPER ###########################

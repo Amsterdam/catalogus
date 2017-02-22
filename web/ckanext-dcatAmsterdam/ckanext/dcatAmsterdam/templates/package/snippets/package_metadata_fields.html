@@ -7,6 +7,21 @@
   {% endblock %}
   #}
 
+  {% block package_custom_fields_dataclassificatie %}
+  {% set existing_dataclassificatie = data.dataclassificatie %}
+    <div class="control-group">
+      <label for="field-dataclassificatie" class="control-label">{{ _('Dataclassificatie') }}</label>
+      <div class="controls">
+        <select id="field-dataclassificatie" name="dataclassificatie" data-module="autocomplete">
+            {% set dataclassificatielist = ['Open','Intern','Intern, beperkt'] %}
+            {% for dataclassificatie in  dataclassificatielist %}
+                  <option value="{{ dataclassificatie }}" {% if existing_dataclassificatie == dataclassificatie %} selected="selected" {% endif %}>{{ dataclassificatie }}</option>
+            {% endfor %}
+        </select>
+      </div>
+    </div>
+  {% endblock %}
+
   {% block package_metadata_fields_url %}
     {{ form.input('url', label=_('Source'), id='field-url', placeholder=_('http://example.com/dataset.json'), value=data.url, error=errors.url, classes=['control-medium']) }}
   {% endblock %}
@@ -75,25 +90,10 @@
       {{ form.input('spatial', label=_('Spatial'),id='field-spatial', placeholder=_('spatial placeholder'),value=data.spatial,error=errors.spatial,classes=['control-medium'])}}
     {% endblock %}
 
-    {% block package_custom_fields_dataclassificatie %}
-    {% set existing_dataclassificatie = data.dataclassificatie %}
-      <div class="control-group">
-        <label for="field-dataclassificatie" class="control-label">{{ _('dataclassificatie') }}</label>
-        <div class="controls">
-          <select id="field-dataclassificatie" name="dataclassificatie" data-module="autocomplete">
-              {% set dataclassificatielist = ['Open','Intern','Intern, beperkt'] %}
-              {% for dataclassificatie in  dataclassificatielist %}
-                    <option value="{{ dataclassificatie }}" {% if existing_dataclassificatie == dataclassificatie %} selected="selected" {% endif %}>{{ dataclassificatie }}</option>
-              {% endfor %}
-          </select>
-        </div>
-      </div>
-    {% endblock %}
-
     {% block package_custom_fields_tijdseenheid %}
     {% set existing_tijdseenheid = data.tijdseenheid %}
       <div class="control-group">
-        <label for="field-tijdseenheid" class="control-label">{{ _('tijdseenheid') }}</label>
+        <label for="field-tijdseenheid" class="control-label">{{ _('Tijdseenheid') }}</label>
         <div class="controls">
           <select id="field-tijdseenheid" name="tijdseenheid" data-module="autocomplete">
               {% set tijdseenheidlist = ['Geen tijdseenheid','Realtime','Minuten','Uren','Dagdelen','Dagen','Weken','Maanden','Kwartalen','Jaren'] %}
@@ -108,7 +108,7 @@
     {% block package_custom_fields_gebiedseenheid %}
     {% set existing_gebiedseenheid = data.gebiedseenheid %}
       <div class="control-group">
-        <label for="field-gebiedseenheid" class="control-label">{{ _('gebiedseenheid') }}</label>
+        <label for="field-gebiedseenheid" class="control-label">{{ _('Gebiedseenheid') }}</label>
         <div class="controls">
           <select id="field-gebiedseenheid" name="gebiedseenheid" data-module="autocomplete">
               {% set gebiedseenheidlist = ['Geen geografie','Specifieke punten/vlakken/lijnen','Land','Provincie','Regio','Gemeente','Stadsdeel','Gebied','Buurtcombinatie','Buurt','Bouwblok','Postcode (PP4, 4 cijfers)','Postcode (PP5, 4 cijfers + 1 letter)','Postcode (PP6, 4 cijfers + 2 letters)'] %}
