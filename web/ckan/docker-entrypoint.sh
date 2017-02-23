@@ -20,7 +20,7 @@ done
 echo Building db
 
 cd /src/ckan
-#cloudfuse -o username=catalogus,password=${CATALOGUS_OBJECTSTORE_PASSWORD},tenant=e85bcf2124fb4437b1bc6eb75dfc3abf,authurl=https://identity.stack.cloudvps.com/v2.0 /var/lib/ckan/
+cloudfuse -o username=catalogus,password=${CATALOGUS_OBJECTSTORE_PASSWORD},tenant=e85bcf2124fb4437b1bc6eb75dfc3abf,authurl=https://identity.stack.cloudvps.com/v2.0 /var/lib/ckan/
 
 # init database
 paster db init -c /app/config.ini
