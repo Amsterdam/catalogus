@@ -41,7 +41,8 @@ RUN pip install -e 'git+https://github.com/ckan/ckan.git@ckan-2.6.0#egg=ckan'
 
 # Inject setuptools 20.4 to prevent exception
 RUN sed -i '1s/^/setuptools==20.4 /' /src/ckan/requirements.txt
-RUN echo "datapunt-authorization==0.2.0" >> /src/ckan/requirements.txt
+RUN echo "datapunt-authorization==0.2.1" >> /src/ckan/requirements.txt
+RUN echo "datapunt-authorization-levels==0.1.0" >> /src/ckan/requirements.txt
 RUN echo "PyJWT>=1.4.2" >> /src/ckan/requirements.txt
 
 

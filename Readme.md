@@ -1,6 +1,8 @@
 ### Eenmalige setup DB
 
-    $ pg_restore -d ckan -h database_ckan -p 5432 -U ckan /data/dump.pgsql
+    Import the latest database from acceptance:
+
+    $ docker-compose exec database update-db.sh catalogus
 
 
 ### Aanmaken sysadmin account
@@ -9,3 +11,10 @@
 
 Je wordt daarna gevraagd een password aan te maken als deze gebruiker nog niet bestaat
 
+
+
+
+
+To import the latest database from acceptance:
+
+    docker-compose exec database update-db.sh catalogu
