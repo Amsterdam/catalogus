@@ -26,11 +26,11 @@ RUN apt-get update \
         curl wget unzip \
 	&& apt-get clean \
 	&& pip install --upgrade pip \
+
 	## Install cloudfuse
 	&& wget https://github.com/redbo/cloudfuse/archive/master.zip \
 	&& unzip master.zip && cd cloudfuse-master \
     && ./configure && make && make install && cd ..
-
 
 # Adding user
 RUN adduser --system ckan
@@ -44,7 +44,7 @@ RUN sed -i '1s/^/setuptools==20.4 /' /src/ckan/requirements.txt
 RUN echo "datapunt-authorization==0.2.1" >> /src/ckan/requirements.txt
 RUN echo "datapunt-authorization-levels==0.1.0" >> /src/ckan/requirements.txt
 RUN echo "PyJWT>=1.4.2" >> /src/ckan/requirements.txt
-
+RUN echo "httpretty==0.8.14" >> /src/ckan/requirements.txt
 
 RUN pip install -r /src/ckan/requirements.txt
 RUN mkdir -p /etc/ckan/default \
@@ -71,5 +71,8 @@ COPY ckan /app/
 
 
 RUN export CKAN_INI=/app/config.ini
+
+# Add users
+WORKDIR /src/ckan
 
 CMD /app/docker-entrypoint.sh
