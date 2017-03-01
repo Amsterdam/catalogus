@@ -23,6 +23,7 @@ ckan:
     CKAN_SQLALCHEMY_URL: postgresql://catalogus:insecure@database/catalogus
     CKAN_SOLR_URL: http://solr:8983/solr/ckan
     CATALOGUS_OBJECTSTORE_PASSWORD: insecure
+    JWT_SHARED_SECRET_KEY: insecure
   cap_add:
     - SYS_ADMIN
   devices:
