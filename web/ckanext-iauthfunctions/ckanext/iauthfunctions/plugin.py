@@ -18,17 +18,14 @@ log = logging.getLogger(__name__)
 
 def authz_package_show(context, data_dict):
     """
-    :param id: the id or name of the dataset
-    :type id: string
+    data_dict params
+        id: the id or name of the dataset
+        use_default_schema: use default package schema instead of
+                            a custom schema defined with an IDatasetForm
+                            plugin (default: False)
 
-    :param use_default_schema: use default package schema instead of
-           a custom schema defined with an IDatasetForm plugin (default: False)
-    :type use_default_schema: bool
-
-    :param include_tracking: add tracking information to dataset and
-           resources (default: False)
-    :type include_tracking: bool
-
+        include_tracking: add tracking information to dataset and
+                          resources (default: False)
     :rtype: dictionary
     """
 
@@ -90,17 +87,22 @@ class IauthfunctionsPlugin(plugins.SingletonPlugin):
         Implementiation of IAuthenticator.identify
         Identify which user (if any) is logged in via DatapuntAmsterdam / auth
         """
-
         toolkit.c.user = 'open'
-
         if pylons.request.headers.get('Authorization'):
-            # when JWT can be decoded user is authenticated
+            try:
+                prefix, jwt_token = pylons.request.headers.get('Authorization').split()
+            except ValueError:
+                log.error('Authorization header must have format: Bearer [JWT]')
+
+            if prefix != 'Bearer':
+               log.error('Authorization header prefix must be Bearer')
+
             try:
                 jwt_payload = jwt.decode(
-                    pylons.session.get('Authorization'),
-                    os.getenv('JWT_SHARED_SECRET_KEY', 'insecure'),
-                    algorithms=['HS256']
-                )
+                    jwt_token,
+                    os.getenv('JWT_SHARED_SECRET_KEY'),
+                    algorithms=['HS256'])
+
                 if jwt_payload.get('authz') == authorization_levels.LEVEL_EMPLOYEE:
                     # dataclassificatie == 'Intern'
                     toolkit.c.user = 'employee'
@@ -108,7 +110,7 @@ class IauthfunctionsPlugin(plugins.SingletonPlugin):
                     # dataclassificatie == 'Intern + Intern, beperkt'
                     toolkit.c.user = 'employee_plus'
             except:
-                pass
+                log.error('Decode of authorization token failed, check secret key')
 
         return toolkit.c.user
 
