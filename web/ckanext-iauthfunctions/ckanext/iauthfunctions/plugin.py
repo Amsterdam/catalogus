@@ -29,11 +29,11 @@ def authz_package_show(context, data_dict):
     :rtype: dictionary
     """
 
+
     user = context.get('user')
     package = get_package_object(context, data_dict)
     # draft state indicates package is still in the creation process
     # so we need to check we have creation rights.
-
     authorized = None
     if package.state.startswith('draft'):
         auth = authz.is_authorized('package_update', context, data_dict)
@@ -44,24 +44,33 @@ def authz_package_show(context, data_dict):
         authorized = toolkit.c.user in ['employee', 'employee_plus']
 
     if package.private:
-        ## Intern, beperkt
-        if authorized and package.dataclassificatie == 'Intern, beperkt' and package.state == 'active':
-            if toolkit.c.user == 'employee_plus':
-                return {'success': True}
-            else:
-                return {'success': False,
-                        'msg': _('User %s not authorized to read package %s') % (user, package.id)}
-
-        ## Intern
-        if authorized and package.dataclassificatie == 'Intern' and package.state == 'active':
+        if authorized and package.state == 'active':
+            # Intern, beperkt
+            # TC: Find out where to get to the field dataclassificatie
+            # if authorized and package.dataclassificatie == 'Intern, beperkt' and package.state == 'active':
+            #     if toolkit.c.user == 'employee_plus':
+            #         return {'success': True}
+            #     else:
+            #         return {'success': False,
+            #                 'msg': _('User %s not authorized to read package %s') % (user, package.id)}
+            #
+            # ## Intern
+            # TC: Find out where to get to the field dataclassificatie
+            # if authorized and package.dataclassificatie == 'Intern' and package.state == 'active':
+            #     return {'success': True}
+            #
             return {'success': True}
+        else:
+            return {'success': False,
+                    'msg': _('User %s not authorized to read package %s') % (user, package.id)}
 
-        return {'success': False,
-                'msg': _('User %s not authorized to read package %s') % (user, package.id)}
     else:
         # anyone can see a public package
         if package.state == 'active':
             return {'success': True}
+
+    return {'success': False,
+            'msg': _('User %s not authorized to read package %s') % (user, package.id)}
 
 
 class IauthfunctionsPlugin(plugins.SingletonPlugin):
@@ -95,7 +104,7 @@ class IauthfunctionsPlugin(plugins.SingletonPlugin):
                 log.error('Authorization header must have format: Bearer [JWT]')
 
             if prefix != 'Bearer':
-               log.error('Authorization header prefix must be Bearer')
+                log.error('Authorization header prefix must be Bearer')
 
             try:
                 jwt_payload = jwt.decode(
