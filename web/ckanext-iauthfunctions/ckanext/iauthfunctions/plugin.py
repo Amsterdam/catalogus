@@ -46,7 +46,7 @@ def authz_package_show(context, data_dict):
     if package.private:
         if authorized and package.state == 'active':
             # Intern, beperkt
-            # TC: Find out where to get to the field dataclassificatie
+            # Todo: Find out where to get to the field dataclassificatie
             # if authorized and package.dataclassificatie == 'Intern, beperkt' and package.state == 'active':
             #     if toolkit.c.user == 'employee_plus':
             #         return {'success': True}
@@ -55,7 +55,7 @@ def authz_package_show(context, data_dict):
             #                 'msg': _('User %s not authorized to read package %s') % (user, package.id)}
             #
             # ## Intern
-            # TC: Find out where to get to the field dataclassificatie
+            # Todo: Find out where to get to the field dataclassificatie
             # if authorized and package.dataclassificatie == 'Intern' and package.state == 'active':
             #     return {'success': True}
             #
