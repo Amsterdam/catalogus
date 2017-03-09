@@ -2,7 +2,7 @@
 
 def tryStep(String message, Closure block, Closure tearDown = null) {
     try {
-        block()
+        block();
     }
     catch (Throwable t) {
         slackSend message: "${env.JOB_NAME}: ${message} failure ${env.BUILD_URL}", channel: '#ci-channel', color: 'danger'
@@ -11,31 +11,26 @@ def tryStep(String message, Closure block, Closure tearDown = null) {
     }
     finally {
         if (tearDown) {
-            tearDown()
+            tearDown();
         }
     }
 }
 
 
 node {
-
     stage("Checkout") {
         checkout scm
     }
 
-    withCredentials([[$class: 'StringBinding',
-                      credentialsId: 'CATALOGUS_OBJECTSTORE_PASSWORD',
-                      variable: 'CATALOGUS_OBJECTSTORE_PASSWORD']]) {
-        stage("Build develop image") {
-            tryStep "build", {
+    withCredentials([[$class: 'StringBinding', credentialsId: 'CATALOGUS_OBJECTSTORE_PASSWORD', variable: 'CATALOGUS_OBJECTSTORE_PASSWORD']]) {
+        stage("Build image") {
+            tryStep "build catalog", {
                 def image = docker.build("build.datapunt.amsterdam.nl:5000/datapunt/catalogus:${env.BUILD_NUMBER}", "web")
                 image.push()
-                image.push("acceptance")
             }
             tryStep "build SOLR", {
                 def image = docker.build("build.datapunt.amsterdam.nl:5000/datapunt/catalogus-solr:${env.BUILD_NUMBER}", "solr")
                 image.push()
-                image.push("acceptance")
             }
         }
     }
@@ -46,14 +41,28 @@ String BRANCH = "${env.BRANCH_NAME}"
 if (BRANCH == "master") {
 
     node {
+        stage('Push acceptance image') {
+            tryStep "Catalogus image tagging", {
+                def image = docker.image("build.datapunt.amsterdam.nl:5000/datapunt/catalogus:${env.BUILD_NUMBER}")
+                image.pull()
+                image.push("acceptance")
+            }
+            tryStep "SOLR image tagging", {
+                def image = docker.image("build.datapunt.amsterdam.nl:5000/datapunt/catalogus-solr:${env.BUILD_NUMBER}")
+                image.pull()
+                image.push("acceptance")
+            }
+        }
+    }
+
+    node {
         stage("Deploy to ACC") {
             tryStep "deployment", {
                 build job: 'Subtask_Openstack_Playbook',
-                        parameters: [
-                                [$class: 'StringParameterValue', name: 'INVENTORY', value: 'acceptance'],
-                                [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy-catalogus.yml'],
-                                [$class: 'StringParameterValue', name: 'BRANCH', value: 'master'],
-                        ]
+                parameters: [
+                    [$class: 'StringParameterValue', name: 'INVENTORY', value: 'acceptance'],
+                    [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy-catalogus.yml'],
+                ]
             }
         }
     }
@@ -64,21 +73,17 @@ if (BRANCH == "master") {
         input "Deploy to Production?"
     }
 
-
-
     node {
         stage('Push production image') {
             tryStep "image tagging", {
                 def image = docker.image("build.datapunt.amsterdam.nl:5000/datapunt/catalogus:${env.BUILD_NUMBER}")
                 image.pull()
-
                 image.push("production")
                 image.push("latest")
             }
             tryStep "image tagging SOLR", {
                 def image = docker.image("build.datapunt.amsterdam.nl:5000/datapunt/catalogus-solr:${env.BUILD_NUMBER}")
                 image.pull()
-
                 image.push("production")
                 image.push("latest")
             }
@@ -89,11 +94,10 @@ if (BRANCH == "master") {
         stage("Deploy") {
             tryStep "deployment", {
                 build job: 'Subtask_Openstack_Playbook',
-                        parameters: [
-                                [$class: 'StringParameterValue', name: 'INVENTORY', value: 'production'],
-                                [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy-catalogus.yml'],
-                                [$class: 'StringParameterValue', name: 'BRANCH', value: 'master'],
-                        ]
+                parameters: [
+                    [$class: 'StringParameterValue', name: 'INVENTORY', value: 'production'],
+                    [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy-catalogus.yml'],
+                ]
             }
         }
     }
