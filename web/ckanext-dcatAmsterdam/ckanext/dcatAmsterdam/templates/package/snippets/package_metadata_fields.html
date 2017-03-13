@@ -46,7 +46,7 @@
     {% endblock %}
 
     {% block package_custom_fields_contact_uri %}
-      {{ form.input('contact_uri',label=_('Contact uri'),id='field-contact_uri',placeholder=_('contact_uri placeholder'),value=data.contact_uri,error=errors.contact_uri,classes=['control-medium']) }}
+      {{ form.input('contact_uri',label=_('Contact website'),id='field-contact_uri',placeholder=_('contact_uri placeholder'),value=data.contact_uri,error=errors.contact_uri,classes=['control-medium']) }}
     {% endblock %}
 
     {% block package_custom_fields_language %}
@@ -69,8 +69,12 @@
 
     {% endblock %}
 
+    {% block package_custom_fields_publisher %}
+      {{ form.input('publisher', label=_('Publisher'), id='field-publisher', placeholder=_('publisher placeholder'), value=data.publisher, error=errors.publisher, classes=['control-medium']) }}
+    {% endblock %}
+
     {% block package_custom_fields_publisher_uri %}
-      {{ form.input('publisher_uri', label=_('Publisher'), id='field-publisher_uri', placeholder=_('publisher_uri placeholder'), value=data.publisher_uri, error=errors.publisher_uri, classes=['control-medium']) }}
+      {{ form.input('publisher_uri', label=_('Publisher website'), id='field-publisher_uri', placeholder=_('publisher_uri placeholder'), value=data.publisher_uri, error=errors.publisher_uri, classes=['control-medium']) }}
     {% endblock %}
 
     {% block package_custom_fields_publisher_email %}

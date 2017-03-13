@@ -38,6 +38,7 @@ class DCATAmsterdam(p.SingletonPlugin, DefaultTranslation, tk.DefaultDatasetForm
         # Add our metadata fields to the package schema
         schema.update({
             'language': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')],
+            'publisher': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')],
             'publisher_uri': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')],
             'contact_email': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')],
             'contact_name': [tk.get_validator('ignore_missing'), tk.get_converter('convert_to_extras')],
@@ -68,11 +69,11 @@ class DCATAmsterdam(p.SingletonPlugin, DefaultTranslation, tk.DefaultDatasetForm
         schema = self._modify_package_schema(schema)
         return schema
 
-
     def show_package_schema(self):
         schema = super(DCATAmsterdam, self).show_package_schema()
         schema.update({
             'language': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
+            'publisher': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
             'publisher_uri': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
             'contact_email': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],
             'contact_name': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')],

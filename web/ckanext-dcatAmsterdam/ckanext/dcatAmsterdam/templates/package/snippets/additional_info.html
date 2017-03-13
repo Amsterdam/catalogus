@@ -16,7 +16,7 @@
   {% endif %}
   {% if pkg_dict.contact_uri %}
     <tr>
-      <th scope="row" class="dataset-label">{{ _("Contact uri") }}</th>
+      <th scope="row" class="dataset-label">{{ _("Contact website") }}</th>
       <td class="dataset-details">{{ pkg_dict.contact_uri }}</td>
     </tr>
   {% endif %}
@@ -32,9 +32,15 @@
       <td class="dataset-details">{{ pkg_dict.theme }}</td>
     </tr>
   {% endif %}
-  {% if pkg_dict.publisher_uri %}
+  {% if pkg_dict.publisher %}
     <tr>
       <th scope="row" class="dataset-label">{{ _("Publisher") }}</th>
+      <td class="dataset-details">{{ pkg_dict.publisher }}</td>
+    </tr>
+  {% endif %}
+  {% if pkg_dict.publisher_uri %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Publisher website") }}</th>
       <td class="dataset-details">{{ pkg_dict.publisher_uri }}</td>
     </tr>
   {% endif %}
