@@ -24,6 +24,8 @@ ckan:
     CKAN_SOLR_URL: http://solr:8983/solr/ckan
     CATALOGUS_OBJECTSTORE_PASSWORD: insecure
     JWT_SHARED_SECRET_KEY: insecure
+    OBJECTSTORE_TOKEN: insecure
+    TEMP_URL_KEY: insecure
   cap_add:
     - SYS_ADMIN
   devices:

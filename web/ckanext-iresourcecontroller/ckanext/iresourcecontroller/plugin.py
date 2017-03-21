@@ -7,7 +7,7 @@ import ckan.plugins as plugins
 from urlparse import urlparse
 
 
-class ExampleIResourceControllerPlugin(plugins.SingletonPlugin):
+class IresourcecontrollerPlugin(plugins.SingletonPlugin):
 
     plugins.implements(plugins.IResourceController)
 
