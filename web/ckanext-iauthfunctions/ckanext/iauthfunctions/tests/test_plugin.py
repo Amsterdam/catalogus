@@ -50,7 +50,7 @@ def _access_token_response_dict(payload):
 
 @httpretty.activate
 def test_login():
-    endpoint = "http://datapunt.amsterdam.nl/catalogus/login_generic"
+    endpoint = "http://data.amsterdam.nl/catalogus/login_generic"
     httpretty.register_uri(httpretty.POST, endpoint, body="logged in")
     response = requests.post(endpoint)
     assert response.text == "logged in"
