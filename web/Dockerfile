@@ -55,12 +55,17 @@ RUN mkdir -p /etc/ckan/default \
 # Copy plugins
 COPY ckanext-dcatAmsterdam /src/ckanext-dcatAmsterdam
 COPY ckanext-iauthfunctions /src/ckanext-iauthfunctions
+COPY ckanext-iresourcecontroller /src/ckanext-iresourcecontroller
 
 WORKDIR /src/ckanext-iauthfunctions
+# make sure the the plugins are installed in develop mode
 RUN python setup.py develop
 
 WORKDIR /src/ckanext-dcatAmsterdam
 # make sure the the plugins are installed in develop mode
+RUN python setup.py develop
+
+WORKDIR /src/ckanext-iresourcecontroller
 RUN python setup.py develop
 
 RUN chown -R ckan /src/ckanext-*
