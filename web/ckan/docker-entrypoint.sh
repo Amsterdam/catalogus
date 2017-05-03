@@ -24,7 +24,7 @@ cloudfuse -o username=catalogus,password=${CATALOGUS_OBJECTSTORE_PASSWORD},tenan
 
 # Make tempurl setting
 curl -X POST \
--H "X-Auth-Token: ${OBJECTSTORE_TOKEN}" \
+-H "X-Auth-Token: ${CATALOGUS_OBJECTSTORE_TOKEN}" \
 -H "X-Account-Meta-Temp-Url-Key: ${TEMP_URL_KEY}" \
 https://e85bcf2124fb4437b1bc6eb75dfc3abf.objectstore.eu/
 
