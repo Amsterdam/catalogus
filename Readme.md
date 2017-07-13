@@ -7,7 +7,7 @@
 
 ### Aanmaken sysadmin account (commando uitvoeren vnuit /src/ckan in de docker)
 
-    $ paster sysadmin add <user-name> -c /app/config.ini
+    $ paster sysadmin add <user-name> -c /app/api.ini
 
 Je wordt daarna gevraagd een password aan te maken als deze gebruiker nog niet bestaat
 
@@ -18,4 +18,4 @@ Je wordt daarna gevraagd een password aan te maken als deze gebruiker nog niet b
     
 ### Toevoegen van de 3 ois gebruikers `open`, `employee` en `employee_plus`
 
-    $ docker-compose exec ckan /app/create_ois_users.sh -c /app/config.ini
+    $ docker-compose exec ckan /app/create_ois_users.sh -c /app/api.ini

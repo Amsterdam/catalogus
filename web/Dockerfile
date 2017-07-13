@@ -74,8 +74,7 @@ RUN chown -R ckan /src/ckanext-*
 USER ckan
 COPY ckan /app/
 
-
-RUN export CKAN_INI=/app/config.ini
+RUN export CKAN_INI=/app/api.ini
 
 # Add users
 WORKDIR /src/ckan
