@@ -5,7 +5,7 @@
     $ docker-compose exec database update-db.sh catalogus
 
 
-### Aanmaken sysadmin account
+### Aanmaken sysadmin account (commando uitvoeren vnuit /src/ckan in de docker)
 
     $ paster sysadmin add <user-name> -c /app/config.ini
 
