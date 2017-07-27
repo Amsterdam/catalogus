@@ -29,9 +29,9 @@ curl -X POST \
 https://e85bcf2124fb4437b1bc6eb75dfc3abf.objectstore.eu/
 
 # init database
-paster db init -c /app/api.ini
+paster db init -c /app/config.ini
 # rebuild solr index
-paster search-index rebuild -c /app/api.ini
+paster search-index rebuild -c /app/config.ini
 
 # start service
 paster serve /app/${CONFIG_FILE}.ini
