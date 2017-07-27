@@ -34,4 +34,4 @@ paster db init -c /app/config.ini
 paster search-index rebuild -c /app/config.ini
 
 # start service
-paster serve /app/${CONFIG_FILE}.ini
+paster serve /app/config.ini
