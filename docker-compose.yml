@@ -8,6 +8,11 @@ services:
       POSTGRES_USER: catalogus
       POSTGRES_DB: catalogus
       POSTGRES_PASSWORD: insecure
+      LOCAL: "True"
+    extra_hosts:
+      admin.datapunt.amsterdam.nl: 10.99.157.24
+    volumes:
+        - "~/.ssh/datapunt.key:/root/.ssh/datapunt.key"
 
   solr:
     build: ./solr
